@@ -42,23 +42,23 @@ export default function HeroSection() {
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', left: '10%', top: '15%',
-          width: '500px', height: '500px',
-          background: 'radial-gradient(ellipse, rgba(184,145,42,0.2) 0%, transparent 65%)',
-          filter: 'blur(50px)', borderRadius: '50%',
+          width: '600px', height: '600px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.55) 0%, rgba(184,145,42,0.15) 40%, transparent 70%)',
+          filter: 'blur(40px)', borderRadius: '50%',
           animation: 'drift-1 18s ease-in-out infinite',
         }} />
         <div style={{
           position: 'absolute', right: '10%', top: '20%',
-          width: '420px', height: '420px',
-          background: 'radial-gradient(ellipse, rgba(184,145,42,0.1) 0%, transparent 65%)',
-          filter: 'blur(70px)', borderRadius: '50%',
+          width: '500px', height: '500px',
+          background: 'radial-gradient(ellipse, rgba(212,169,62,0.45) 0%, rgba(184,145,42,0.12) 40%, transparent 70%)',
+          filter: 'blur(50px)', borderRadius: '50%',
           animation: 'drift-2 24s ease-in-out infinite',
         }} />
         <div style={{
           position: 'absolute', left: '40%', bottom: '10%',
-          width: '360px', height: '360px',
-          background: 'radial-gradient(ellipse, rgba(140,110,50,0.13) 0%, transparent 65%)',
-          filter: 'blur(60px)', borderRadius: '50%',
+          width: '480px', height: '480px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.4) 0%, rgba(140,110,50,0.1) 40%, transparent 70%)',
+          filter: 'blur(45px)', borderRadius: '50%',
           animation: 'drift-3 20s ease-in-out infinite',
         }} />
       </div>
