@@ -1,198 +1,175 @@
+'use client'
+
 import Link from 'next/link'
 
 export default function HeroSection() {
   return (
     <section
       style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        padding: '0 3rem 5rem',
         position: 'relative',
+        width: '100vw',
+        height: '100vh',
         overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--color-ink)',
       }}
     >
-      {/* Grid overlay */}
-      <div className="grid-overlay" />
-
-      {/* Radial glow */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse 60% 50% at 70% 40%, rgba(184,145,42,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 15% 80%, rgba(184,145,42,0.04) 0%, transparent 60%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Circle ornament — meridian motif */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          right: '5rem',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: '520px',
-          height: '520px',
-          border: '1px solid rgba(184,145,42,0.1)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-        }}
-      >
-        {/* Inner rings */}
-        {[380, 240].map((size) => (
-          <div
-            key={size}
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: size,
-              height: size,
-              border: `1px solid rgba(184,145,42,${size === 380 ? '0.07' : '0.13'})`,
-              borderRadius: '50%',
-            }}
-          />
-        ))}
-
-        {/* Vertical meridian line */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: '15%',
-            transform: 'translateX(-50%)',
-            width: '1px',
-            height: '70%',
-            background:
-              'linear-gradient(to bottom, transparent, rgba(184,145,42,0.4), transparent)',
-          }}
-        />
-
-        {/* Center dot */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '8px',
-            height: '8px',
-            background: 'var(--color-gold)',
-            borderRadius: '50%',
-            boxShadow: '0 0 12px rgba(184,145,42,0.5)',
-          }}
-        />
-
-        {/* Dashed horizon */}
-        <div
-          style={{
-            position: 'absolute',
-            left: '15%',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: '70%',
-            height: '1px',
-            background:
-              'repeating-linear-gradient(to right, rgba(184,145,42,0.3) 0px, rgba(184,145,42,0.3) 6px, transparent 6px, transparent 14px)',
-          }}
-        />
+      {/* Ambient blobs — ciridae style */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+      }}>
+        <div style={{
+          position: 'absolute', left: '8%', top: '20%',
+          width: '320px', height: '420px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.18) 0%, transparent 70%)',
+          filter: 'blur(60px)', borderRadius: '50%',
+        }} />
+        <div style={{
+          position: 'absolute', right: '6%', top: '10%',
+          width: '280px', height: '360px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.08) 0%, transparent 70%)',
+          filter: 'blur(80px)', borderRadius: '50%',
+        }} />
+        <div style={{
+          position: 'absolute', right: '15%', bottom: '15%',
+          width: '400px', height: '300px',
+          background: 'radial-gradient(ellipse, rgba(120,100,60,0.12) 0%, transparent 70%)',
+          filter: 'blur(70px)', borderRadius: '50%',
+        }} />
       </div>
 
-      {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <p
-          className="label-section animate-fade-up"
-          style={{ marginBottom: '1.5rem' }}
-        >
-          Zaresh Meridian & Co. — Bali, Indonesia
-        </p>
+      {/* TOP LEFT — CTA */}
+      <Link
+        href="/studio"
+        style={{
+          position: 'absolute', top: '2rem', left: '2rem',
+          fontSize: '0.625rem', letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--color-paper)',
+          textDecoration: 'none',
+          border: '1px solid rgba(245,241,234,0.35)',
+          borderRadius: '999px',
+          padding: '0.5rem 1.25rem',
+          transition: 'border-color 0.3s, color 0.3s',
+          zIndex: 10,
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-gold)'
+          ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--color-gold)'
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(245,241,234,0.35)'
+          ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--color-paper)'
+        }}
+      >
+        Mulai Sekarang
+      </Link>
 
-        <h1
-          className="font-display animate-fade-up delay-200"
-          style={{
-            fontSize: 'clamp(52px, 7vw, 92px)',
-            fontWeight: 300,
-            lineHeight: 1.05,
-            letterSpacing: '-0.01em',
-            maxWidth: '700px',
-          }}
-        >
-          Bisnis yang tumbuh
-          <br />
-          saat kamu{' '}
-          <em style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>
-            istirahat.
-          </em>
-        </h1>
+      {/* TOP RIGHT — Menu */}
+      <button
+        style={{
+          position: 'absolute', top: '2rem', right: '2rem',
+          fontSize: '0.625rem', letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--color-paper)',
+          background: 'none',
+          border: '1px solid rgba(245,241,234,0.35)',
+          borderRadius: '999px',
+          padding: '0.5rem 1.25rem',
+          cursor: 'pointer',
+          display: 'flex', alignItems: 'center', gap: '0.625rem',
+          zIndex: 10,
+        }}
+      >
+        Menu
+        <span style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+          <span style={{ display: 'block', width: '14px', height: '1px', background: 'var(--color-paper)' }} />
+          <span style={{ display: 'block', width: '10px', height: '1px', background: 'var(--color-paper)' }} />
+        </span>
+      </button>
 
-        <p
-          className="animate-fade-up delay-300"
-          style={{
-            marginTop: '1.75rem',
-            fontSize: '0.9375rem',
-            fontWeight: 300,
-            color: 'var(--color-paper-muted)',
-            maxWidth: '440px',
-            lineHeight: 1.8,
-          }}
-        >
-          Strategi digital, sistem marketing, dan skill yang membekali
-          perempuan Indonesia untuk memiliki income sendiri — tanpa
-          mengorbankan keluarga.
-        </p>
+      {/* LEFT tagline */}
+      <p style={{
+        position: 'absolute', left: '2rem', bottom: '50%',
+        transform: 'translateY(50%)',
+        fontSize: '0.625rem', letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        color: 'rgba(245,241,234,0.6)',
+        zIndex: 10,
+      }}>
+        Build · Market
+      </p>
 
-        <div
-          className="animate-fade-up delay-400"
-          style={{
-            marginTop: '2.5rem',
-            display: 'flex',
-            gap: '1.25rem',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Link href="/studio" className="btn-primary">
-            Mulai Bersama Kami
-          </Link>
-          <Link href="/about" className="btn-ghost">
-            Kenali ZM
-          </Link>
+      {/* RIGHT tagline */}
+      <p style={{
+        position: 'absolute', right: '2rem', bottom: '50%',
+        transform: 'translateY(50%)',
+        fontSize: '0.625rem', letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        color: 'rgba(245,241,234,0.6)',
+        zIndex: 10,
+      }}>
+        Automate · Scale
+      </p>
+
+      {/* CENTER — Logo mark + wordmark */}
+      <div style={{
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', gap: '1.25rem',
+        zIndex: 10, position: 'relative',
+      }}>
+        {/* Meridian mark SVG */}
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Outer circle */}
+          <circle cx="36" cy="36" r="34" stroke="rgba(184,145,42,0.35)" strokeWidth="0.5"/>
+          {/* Inner circle */}
+          <circle cx="36" cy="36" r="22" stroke="rgba(184,145,42,0.2)" strokeWidth="0.5"/>
+          {/* Vertical meridian line */}
+          <line x1="36" y1="4" x2="36" y2="68" stroke="rgba(184,145,42,0.6)" strokeWidth="0.75"/>
+          {/* Dashed horizon */}
+          <line x1="4" y1="36" x2="68" y2="36" stroke="rgba(184,145,42,0.4)" strokeWidth="0.75" strokeDasharray="4 4"/>
+          {/* Center dot */}
+          <circle cx="36" cy="36" r="3" fill="#B8912A"/>
+        </svg>
+
+        {/* Wordmark */}
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.75rem',
+            fontWeight: 600,
+            letterSpacing: '0.18em',
+            color: 'var(--color-paper)',
+            textTransform: 'uppercase',
+            lineHeight: 1,
+          }}>
+            Zaresh Meridian
+          </div>
+          <div style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '0.875rem',
+            fontStyle: 'italic',
+            color: 'rgba(245,241,234,0.4)',
+            letterSpacing: '0.1em',
+            marginTop: '0.25rem',
+          }}>
+            & Co.
+          </div>
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          right: '3rem',
-          fontSize: '0.625rem',
-          letterSpacing: '0.25em',
-          textTransform: 'uppercase',
-          color: 'rgba(245,241,234,0.2)',
-          writingMode: 'vertical-rl',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-        }}
-      >
-        Scroll
-        <span
-          style={{
-            display: 'block',
-            width: '1px',
-            height: '48px',
-            background: 'rgba(245,241,234,0.12)',
-          }}
-        />
-      </div>
+      {/* BOTTOM CENTER — tagline */}
+      <p style={{
+        position: 'absolute', bottom: '2.5rem',
+        left: '50%', transform: 'translateX(-50%)',
+        fontSize: '0.6875rem', letterSpacing: '0.15em',
+        textTransform: 'uppercase',
+        color: 'rgba(245,241,234,0.45)',
+        textAlign: 'center', whiteSpace: 'nowrap',
+        zIndex: 10,
+      }}>
+        Bisnis yang tumbuh saat kamu istirahat.
+      </p>
     </section>
   )
 }
