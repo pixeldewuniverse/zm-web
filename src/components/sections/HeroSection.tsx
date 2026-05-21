@@ -16,27 +16,50 @@ export default function HeroSection() {
         background: 'var(--color-ink)',
       }}
     >
-      {/* Ambient blobs — ciridae style */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-      }}>
+      {/* Animated lights */}
+      <style>{`
+        @keyframes drift-1 {
+          0%   { transform: translate(0, 0) scale(1); }
+          25%  { transform: translate(120px, -80px) scale(1.15); }
+          50%  { transform: translate(60px, 100px) scale(0.9); }
+          75%  { transform: translate(-80px, 40px) scale(1.1); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes drift-2 {
+          0%   { transform: translate(0, 0) scale(1); }
+          25%  { transform: translate(-100px, 60px) scale(0.85); }
+          50%  { transform: translate(-40px, -90px) scale(1.2); }
+          75%  { transform: translate(90px, -30px) scale(0.95); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes drift-3 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(80px, 120px) scale(1.1); }
+          66%  { transform: translate(-60px, 60px) scale(0.9); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+      `}</style>
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
         <div style={{
-          position: 'absolute', left: '8%', top: '20%',
-          width: '320px', height: '420px',
-          background: 'radial-gradient(ellipse, rgba(184,145,42,0.18) 0%, transparent 70%)',
-          filter: 'blur(60px)', borderRadius: '50%',
+          position: 'absolute', left: '10%', top: '15%',
+          width: '500px', height: '500px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.2) 0%, transparent 65%)',
+          filter: 'blur(50px)', borderRadius: '50%',
+          animation: 'drift-1 18s ease-in-out infinite',
         }} />
         <div style={{
-          position: 'absolute', right: '6%', top: '10%',
-          width: '280px', height: '360px',
-          background: 'radial-gradient(ellipse, rgba(184,145,42,0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)', borderRadius: '50%',
-        }} />
-        <div style={{
-          position: 'absolute', right: '15%', bottom: '15%',
-          width: '400px', height: '300px',
-          background: 'radial-gradient(ellipse, rgba(120,100,60,0.12) 0%, transparent 70%)',
+          position: 'absolute', right: '10%', top: '20%',
+          width: '420px', height: '420px',
+          background: 'radial-gradient(ellipse, rgba(184,145,42,0.1) 0%, transparent 65%)',
           filter: 'blur(70px)', borderRadius: '50%',
+          animation: 'drift-2 24s ease-in-out infinite',
+        }} />
+        <div style={{
+          position: 'absolute', left: '40%', bottom: '10%',
+          width: '360px', height: '360px',
+          background: 'radial-gradient(ellipse, rgba(140,110,50,0.13) 0%, transparent 65%)',
+          filter: 'blur(60px)', borderRadius: '50%',
+          animation: 'drift-3 20s ease-in-out infinite',
         }} />
       </div>
 
