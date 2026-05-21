@@ -1,2 +1,4 @@
-node_modules
+git add .
+git commit -m "fix: restructure files into correct Next.js src/ layout"
+git pushnode_modules
 node_modules
