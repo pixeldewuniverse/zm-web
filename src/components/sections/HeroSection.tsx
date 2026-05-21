@@ -66,28 +66,6 @@ export default function HeroSection() {
         Mulai Sekarang
       </Link>
 
-      {/* TOP RIGHT — Menu */}
-      <button
-        style={{
-          position: 'absolute', top: '2rem', right: '2rem',
-          fontSize: '0.625rem', letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: 'var(--color-paper)',
-          background: 'none',
-          border: '1px solid rgba(245,241,234,0.35)',
-          borderRadius: '999px',
-          padding: '0.5rem 1.25rem',
-          cursor: 'pointer',
-          display: 'flex', alignItems: 'center', gap: '0.625rem',
-          zIndex: 10,
-        }}
-      >
-        Menu
-        <span style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-          <span style={{ display: 'block', width: '14px', height: '1px', background: 'var(--color-paper)' }} />
-          <span style={{ display: 'block', width: '10px', height: '1px', background: 'var(--color-paper)' }} />
-        </span>
-      </button>
-
       {/* LEFT tagline */}
       <p style={{
         position: 'absolute', left: '2rem', bottom: '50%',
