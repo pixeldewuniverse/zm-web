@@ -106,10 +106,7 @@ export default function Navbar() {
         ))}
       </nav>
 
-      {/* CTA */}
-      <Link href="/studio" className="btn-gold-outline" style={{ fontSize: '0.625rem' }}>
-        Mulai Sekarang
-      </Link>
+    
 
       {/* Mobile hamburger — visible below md */}
       <button
