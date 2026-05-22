@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function CTASection() {
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   return (
     <section style={{
       padding: '10rem 3rem',
@@ -15,8 +18,8 @@ export default function CTASection() {
         style={{ justifyContent: 'center', marginBottom: '2rem' }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         Mulai Sekarang
       </motion.p>
@@ -28,10 +31,10 @@ export default function CTASection() {
           fontWeight: 300, lineHeight: 1.1,
           marginBottom: '1.5rem',
         }}
-        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        initial={{ opacity: 0, y: 40, scale: 0.97 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 1, ease: [0.16, 1, 0.3, 1] }}
       >
         Siap tumbuh secara{' '}
         <em style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>terukur?</em>
@@ -44,18 +47,18 @@ export default function CTASection() {
         }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1], delay: prefersReduced ? 0 : 0.15 }}
       >
         Bergabunglah dengan perempuan Indonesia yang membangun bisnis digital bersama Zaresh Meridian.
       </motion.p>
 
       <motion.div
         style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 0.8, delay: prefersReduced ? 0 : 0.3 }}
       >
         <Link href="/studio" className="btn-primary">Mulai dengan Studio</Link>
         <Link href="/academy" className="btn-ghost">Gabung Academy</Link>

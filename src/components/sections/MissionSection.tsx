@@ -1,20 +1,13 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function MissionSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  const quoteY = useTransform(scrollYProgress, [0, 1], [40, -40])
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
     <section
-      ref={sectionRef}
       style={{
         padding: '8rem 3rem',
         borderTop: '1px solid rgba(245,241,234,0.06)',
@@ -27,12 +20,11 @@ export default function MissionSection() {
           fontSize: 'clamp(28px, 3vw, 44px)',
           fontWeight: 300, lineHeight: 1.3, fontStyle: 'italic',
           color: 'rgba(245,241,234,0.85)',
-          y: quoteY,
         }}
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 1, ease: [0.16, 1, 0.3, 1] }}
       >
         "Bisnis yang paling kuat adalah yang{' '}
         <span style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>tujuannya tidak bisa dibeli</span>
@@ -40,10 +32,10 @@ export default function MissionSection() {
       </motion.blockquote>
 
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: 60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true }}
+        transition={{ duration: prefersReduced ? 0 : 1, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="label-section" style={{ marginBottom: '1.5rem' }}>Filosofi</p>
         <p style={{ fontSize: '0.875rem', color: 'rgba(245,241,234,0.45)', lineHeight: 1.9, marginBottom: '2rem' }}>

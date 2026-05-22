@@ -12,6 +12,9 @@ const TOOLS = [
 ]
 
 export default function ToolsSection() {
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   return (
     <section style={{
       padding: '8rem 3rem',
@@ -21,8 +24,8 @@ export default function ToolsSection() {
         style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="label-section">Tools</p>
         <Link href="https://tools.zareshmeridian.com" target="_blank" style={{
@@ -39,8 +42,8 @@ export default function ToolsSection() {
             key={tool.name}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1], delay: prefersReduced ? 0 : index * 0.12 }}
           >
             <Link href={tool.href} target="_blank" style={{
               display: 'block', background: 'var(--color-ink)',

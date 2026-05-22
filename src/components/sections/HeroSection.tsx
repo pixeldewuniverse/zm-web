@@ -6,14 +6,17 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { scrollY } = useScroll()
+  const { scrollYProgress } = useScroll({ target: sectionRef })
 
-  const blob1Y = useTransform(scrollY, [0, 500], [0, -80])
-  const blob2Y = useTransform(scrollY, [0, 500], [0, -140])
-  const blob3Y = useTransform(scrollY, [0, 500], [0, -100])
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const blob1Y = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const blob2Y = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const blob3Y = useTransform(scrollYProgress, [0, 1], [0, -280])
 
   return (
-    <section
+    <motion.section
       ref={sectionRef}
       style={{
         position: 'relative',
@@ -86,7 +89,7 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        transition={{ duration: prefersReduced ? 0 : 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
       >
         <Link
           href="/studio"
@@ -117,9 +120,9 @@ export default function HeroSection() {
 
       {/* LEFT tagline */}
       <motion.p
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        transition={{ duration: prefersReduced ? 0 : 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: 'absolute', left: '2rem', bottom: '50%',
           transform: 'translateY(50%)',
@@ -134,9 +137,9 @@ export default function HeroSection() {
 
       {/* RIGHT tagline */}
       <motion.p
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        transition={{ duration: prefersReduced ? 0 : 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: 'absolute', right: '2rem', bottom: '50%',
           transform: 'translateY(50%)',
@@ -150,37 +153,27 @@ export default function HeroSection() {
       </motion.p>
 
       {/* CENTER — Logo mark + wordmark */}
-      <div style={{
-        display: 'flex', flexDirection: 'column',
-        alignItems: 'center', gap: '1.25rem',
-        zIndex: 10, position: 'relative',
-      }}>
+      <motion.div
+        style={{
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: '1.25rem',
+          zIndex: 10, position: 'relative',
+        }}
+        initial={{ opacity: 0, scale: 0.88 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: prefersReduced ? 0 : 1.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* Meridian mark SVG */}
-        <motion.svg
-          width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Outer circle */}
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="36" cy="36" r="34" stroke="rgba(184,145,42,0.35)" strokeWidth="0.5"/>
-          {/* Inner circle */}
           <circle cx="36" cy="36" r="22" stroke="rgba(184,145,42,0.2)" strokeWidth="0.5"/>
-          {/* Vertical meridian line */}
           <line x1="36" y1="4" x2="36" y2="68" stroke="rgba(184,145,42,0.6)" strokeWidth="0.75"/>
-          {/* Dashed horizon */}
           <line x1="4" y1="36" x2="68" y2="36" stroke="rgba(184,145,42,0.4)" strokeWidth="0.75" strokeDasharray="4 4"/>
-          {/* Center dot */}
           <circle cx="36" cy="36" r="3" fill="#B8912A"/>
-        </motion.svg>
+        </svg>
 
         {/* Wordmark */}
-        <motion.div
-          style={{ textAlign: 'center' }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
+        <div style={{ textAlign: 'center' }}>
           <div style={{
             fontFamily: 'var(--font-display)',
             fontSize: '1.75rem',
@@ -202,14 +195,14 @@ export default function HeroSection() {
           }}>
             & Co.
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       {/* BOTTOM CENTER — tagline */}
       <motion.p
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+        transition={{ duration: prefersReduced ? 0 : 1, delay: 0.6 }}
         style={{
           position: 'absolute', bottom: '2.5rem',
           left: '50%', transform: 'translateX(-50%)',
@@ -222,6 +215,6 @@ export default function HeroSection() {
       >
         Bisnis yang tumbuh saat kamu istirahat.
       </motion.p>
-    </section>
+    </motion.section>
   )
 }

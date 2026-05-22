@@ -31,6 +31,9 @@ const ARMS = [
 ]
 
 export default function ArmsSection() {
+  const prefersReduced = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   return (
     <section style={{ padding: '8rem 3rem' }}>
       <motion.p
@@ -38,8 +41,8 @@ export default function ArmsSection() {
         style={{ marginBottom: '4rem' }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         Ekosistem
       </motion.p>
@@ -50,8 +53,8 @@ export default function ArmsSection() {
             key={arm.label}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: prefersReduced ? 0 : 0.9, ease: [0.16, 1, 0.3, 1], delay: prefersReduced ? 0 : index * 0.12 }}
           >
             <Link
               href={arm.href}
