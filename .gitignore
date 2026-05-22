@@ -1,4 +1,33 @@
-git add .
-git commit -m "fix: restructure files into correct Next.js src/ layout"
-git pushnode_modules
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Next.js
+.next
+out
+dist
+build
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+.vscode
+.idea
+
+# IDE
+*.swp
+*.swo
+*~
