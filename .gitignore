@@ -31,3 +31,6 @@ lerna-debug.log*
 *.swp
 *.swo
 *~
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
