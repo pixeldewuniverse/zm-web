@@ -82,38 +82,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* TOP LEFT — CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-      >
-        <Link
-          href="/studio"
-          style={{
-            position: 'absolute', top: '2rem', left: '2rem',
-            fontSize: '0.625rem', letterSpacing: '0.2em',
-            textTransform: 'uppercase', color: 'var(--color-paper)',
-            textDecoration: 'none',
-            border: '1px solid rgba(245,241,234,0.35)',
-            borderRadius: '999px',
-            padding: '0.5rem 1.25rem',
-            transition: 'border-color 0.3s, color 0.3s',
-            zIndex: 10,
-            display: 'block',
-          }}
-          onMouseEnter={e => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-gold)'
-            ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--color-gold)'
-          }}
-          onMouseLeave={e => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(245,241,234,0.35)'
-            ;(e.currentTarget as HTMLAnchorElement).style.color = 'var(--color-paper)'
-          }}
-        >
-          Mulai Sekarang
-        </Link>
-      </motion.div>
+     
 
       {/* LEFT tagline */}
       <motion.p
