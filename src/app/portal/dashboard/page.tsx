@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { api } from '@/lib/api'
+import { DEMO_PROJECTS } from '@/lib/demo-data'
 import type { Project, User } from '@/types'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -41,8 +42,13 @@ export default function PortalDashboardPage() {
       const stored = sessionStorage.getItem('zm_user')
       if (stored) setUser(JSON.parse(stored))
 
-      const res = await api.getProjects()
-      setProjects(res.data)
+      const isDemo = sessionStorage.getItem('zm_demo') === '1'
+      if (isDemo) {
+        setProjects(DEMO_PROJECTS)
+      } else {
+        const res = await api.getProjects()
+        setProjects(res.data)
+      }
     } catch {
       setError('Gagal memuat data. Silakan muat ulang halaman.')
     } finally {

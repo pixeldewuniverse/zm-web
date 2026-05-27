@@ -5,6 +5,7 @@ import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { api } from '@/lib/api'
+import { DEMO_PROJECTS, DEMO_REVISIONS } from '@/lib/demo-data'
 import type { Deliverable, Revision, RevisionType } from '@/types'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -32,8 +33,16 @@ export default function DeliverablePage() {
     api.setToken(token)
 
     try {
-      const res = await api.getDeliverable(projectId, params.id)
-      setDeliverable(res.data)
+      const isDemo = sessionStorage.getItem('zm_demo') === '1'
+      if (isDemo) {
+        const allDeliverables = DEMO_PROJECTS.flatMap(p => p.deliverables)
+        const found = allDeliverables.find(d => d.id === params.id)
+        if (!found) { setErrorMsg('Deliverable tidak ditemukan.'); setLoading(false); return }
+        setDeliverable({ ...found, revisions: DEMO_REVISIONS[found.id] ?? [] })
+      } else {
+        const res = await api.getDeliverable(projectId, params.id)
+        setDeliverable(res.data)
+      }
     } catch {
       setErrorMsg('Gagal memuat deliverable.')
     } finally {
@@ -47,10 +56,12 @@ export default function DeliverablePage() {
     if (!deliverable) return
     setPanel('approving')
     setActionStatus('loading')
+    const isDemo = typeof window !== 'undefined' && sessionStorage.getItem('zm_demo') === '1'
     try {
-      await api.approveDeliverable(projectId, deliverable.id)
+      if (!isDemo) await api.approveDeliverable(projectId, deliverable.id)
+      setDeliverable(d => d ? { ...d, status: 'approved', approved_at: new Date().toISOString() } : d)
       setActionStatus('done')
-      load()
+      setPanel('idle')
     } catch {
       setActionStatus('error')
       setErrorMsg('Gagal menyetujui. Silakan coba lagi.')
@@ -61,11 +72,27 @@ export default function DeliverablePage() {
     e.preventDefault()
     if (!deliverable || !revisionForm.feedback.trim()) return
     setActionStatus('loading')
+    const isDemo = typeof window !== 'undefined' && sessionStorage.getItem('zm_demo') === '1'
     try {
-      await api.requestRevision(projectId, deliverable.id, revisionForm)
+      const nextNum = deliverable.revision_count + 1
+      const newRevision: Revision = {
+        id: `rev-demo-${Date.now()}`,
+        deliverable_id: deliverable.id,
+        revision_number: nextNum,
+        revision_type: revisionForm.revision_type,
+        feedback: revisionForm.feedback,
+        is_additional: nextNum > deliverable.max_free_revisions,
+        additional_charge: nextNum > deliverable.max_free_revisions ? REVISION_CHARGE : undefined,
+        submitted_at: new Date().toISOString(),
+      }
+      if (!isDemo) await api.requestRevision(projectId, deliverable.id, revisionForm)
+      setDeliverable(d => d
+        ? { ...d, status: 'revision_requested', revision_count: nextNum, revisions: [...d.revisions, newRevision] }
+        : d
+      )
       setActionStatus('done')
       setPanel('idle')
-      load()
+      setRevisionForm({ revision_type: 'Content', feedback: '' })
     } catch {
       setActionStatus('error')
       setErrorMsg('Gagal mengirim permintaan revisi. Silakan coba lagi.')
