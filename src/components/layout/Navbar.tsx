@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Academy', href: '/academy' },
   { label: 'Products', href: '/products' },
   { label: 'About', href: '/about' },
+  { label: 'Kontak', href: '/contact' },
 ] as const
 
 export default function Navbar() {
@@ -106,7 +107,30 @@ export default function Navbar() {
         ))}
       </nav>
 
-    
+      {/* Portal CTA */}
+      <Link
+        href="/portal"
+        style={{
+          fontSize: '0.625rem',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          padding: '0.5rem 1.25rem',
+          border: '1px solid rgba(184,145,42,0.35)',
+          color: 'var(--color-gold)',
+          textDecoration: 'none',
+          transition: 'background 0.3s ease, border-color 0.3s ease',
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(184,145,42,0.1)'
+          ;(e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-gold)'
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'
+          ;(e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(184,145,42,0.35)'
+        }}
+      >
+        Client Portal
+      </Link>
 
       {/* Mobile hamburger — visible below md */}
       <button

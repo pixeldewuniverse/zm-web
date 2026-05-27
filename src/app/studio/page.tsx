@@ -177,7 +177,7 @@ export default function StudioPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
             >
-              <Link href="#konsultasi" className="btn-primary">Mulai Konsultasi</Link>
+              <Link href="/contact" className="btn-primary">Mulai Konsultasi</Link>
               <Link href="#layanan" className="btn-ghost">Lihat Layanan</Link>
             </motion.div>
 
@@ -458,7 +458,7 @@ export default function StudioPage() {
             viewport={VIEWPORT}
             transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
           >
-            <Link href="#" className="btn-primary">Jadwalkan Konsultasi</Link>
+            <Link href="/contact" className="btn-primary">Jadwalkan Konsultasi</Link>
           </motion.div>
         </section>
       </main>

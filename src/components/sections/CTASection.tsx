@@ -57,7 +57,7 @@ export default function CTASection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
       >
-        <Link href="/studio" className="btn-primary">Mulai dengan Studio</Link>
+        <Link href="/contact" className="btn-primary">Mulai Konsultasi Gratis</Link>
         <Link href="/academy" className="btn-ghost">Gabung Academy</Link>
       </motion.div>
     </section>
