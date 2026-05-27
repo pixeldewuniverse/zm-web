@@ -15,16 +15,13 @@ export default function MissionSection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        padding: '8rem 3rem',
-        borderTop: '1px solid rgba(245,241,234,0.06)',
-        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'center',
-      }}
+      className="mission-grid section-pad"
+      style={{ borderTop: '1px solid rgba(245,241,234,0.06)' }}
     >
       <motion.blockquote
         style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(28px, 3vw, 44px)',
+          fontSize: 'clamp(24px, 3vw, 44px)',
           fontWeight: 300, lineHeight: 1.3, fontStyle: 'italic',
           color: 'rgba(245,241,234,0.85)',
           y: quoteY,

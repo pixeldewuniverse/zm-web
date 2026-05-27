@@ -77,8 +77,9 @@ export default function PortalDashboardPage() {
       {/* Top bar */}
       <header style={{
         borderBottom: '1px solid rgba(245,241,234,0.06)',
-        padding: '1.25rem 2.5rem',
+        padding: '1rem 1.5rem',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        flexWrap: 'wrap', gap: '0.75rem',
       }}>
         <Link href="/" style={{ textDecoration: 'none' }}>
           <span style={{
@@ -109,7 +110,7 @@ export default function PortalDashboardPage() {
         </div>
       </header>
 
-      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '3rem 2.5rem' }}>
+      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '2.5rem 1.5rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -215,6 +216,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={`/portal/deliverables/${d.id}?project=${project.id}`}
               style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                gap: '0.75rem',
                 padding: '0.875rem 1rem',
                 background: 'var(--color-ink-3)',
                 textDecoration: 'none',
@@ -222,8 +224,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 transition: 'border-color 0.2s',
               }}
             >
-              <span style={{ fontSize: '0.875rem', color: 'var(--color-paper)' }}>{d.title}</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <span style={{ fontSize: '0.875rem', color: 'var(--color-paper)', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.title}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
                 {d.revision_count > 0 && (
                   <span style={{ fontSize: '0.6875rem', color: 'rgba(245,241,234,0.3)' }}>
                     Rev. #{d.revision_count}

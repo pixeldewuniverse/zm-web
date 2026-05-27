@@ -129,6 +129,116 @@ body {
   pointer-events: none;
 }
 
+/* ─── Responsive layout helpers ──────────────────────────────────────────── */
+
+.section-pad {
+  padding: 8rem 3rem;
+}
+.section-pad-lg {
+  padding: 10rem 3rem;
+}
+
+/* Grids collapse at 768px */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(245,241,234,0.06);
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245,241,234,0.06);
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(245,241,234,0.06);
+}
+
+/* Form grid — 2 cols → 1 col */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Contact layout — sidebar on right */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Mission section — 2 even cols */
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* Tools header row */
+.tools-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+/* Navbar */
+.nav-desktop { display: flex; gap: 2.25rem; }
+.nav-portal-cta { display: block; }
+.nav-hamburger { display: none !important; }
+.nav-mobile-menu { display: none; }
+
+@media (max-width: 768px) {
+  .section-pad      { padding: 5rem 1.5rem; }
+  .section-pad-lg   { padding: 6rem 1.5rem; }
+
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-5 { grid-template-columns: 1fr 1fr; }
+
+  .form-grid-2    { grid-template-columns: 1fr; }
+  .contact-grid   { grid-template-columns: 1fr; gap: 3rem; }
+  .mission-grid   { grid-template-columns: 1fr; gap: 3rem; }
+  .tools-header   { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+  .nav-desktop    { display: none !important; }
+  .nav-portal-cta { display: none !important; }
+  .nav-hamburger  { display: flex !important; }
+  .nav-mobile-menu.open { display: flex; }
+}
+
+.hero-side-tag { display: block; }
+
+/* Studio steps connector line — hide on mobile */
+.studio-steps .step-connector { display: block; }
+@media (max-width: 768px) {
+  .studio-steps .step-connector { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-side-tag { display: none; }
+}
+
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .grid-5 { grid-template-columns: 1fr; }
+}
+
+/* ─── Marquee ──────────────────────────────────────────────────────────────── */
+
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }

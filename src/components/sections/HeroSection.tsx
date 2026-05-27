@@ -78,11 +78,12 @@ export default function HeroSection() {
         }} />
       </div>
 
-      {/* LEFT tagline */}
+      {/* LEFT tagline — hidden on mobile */}
       <motion.p
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        className="hero-side-tag"
         style={{
           position: 'absolute', left: '2rem', top: '50%',
           transform: 'translateY(-50%)',
@@ -95,11 +96,12 @@ export default function HeroSection() {
         Build · Market
       </motion.p>
 
-      {/* RIGHT tagline */}
+      {/* RIGHT tagline — hidden on mobile */}
       <motion.p
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        className="hero-side-tag"
         style={{
           position: 'absolute', right: '2rem', top: '50%',
           transform: 'translateY(-50%)',

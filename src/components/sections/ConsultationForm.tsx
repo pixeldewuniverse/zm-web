@@ -110,7 +110,7 @@ export default function ConsultationForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Name + Email */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="form-grid-2">
         <label style={fieldWrap}>
           <span style={labelStyle}>Nama Lengkap *</span>
           <input
@@ -136,7 +136,7 @@ export default function ConsultationForm() {
       </div>
 
       {/* Phone + Company */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="form-grid-2">
         <label style={fieldWrap}>
           <span style={labelStyle}>Nomor WhatsApp</span>
           <input
@@ -162,7 +162,7 @@ export default function ConsultationForm() {
       {/* Service Interest */}
       <div style={fieldWrap}>
         <span style={labelStyle}>Layanan yang kamu minati *</span>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
+        <div className="form-grid-2" style={{ gap: '0.5rem' }}>
           {SERVICE_OPTIONS.map(opt => (
             <button
               key={opt.value}

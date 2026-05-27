@@ -32,7 +32,7 @@ const ARMS = [
 
 export default function ArmsSection() {
   return (
-    <section style={{ padding: '8rem 3rem' }}>
+    <section className="section-pad">
       <motion.p
         className="label-section"
         style={{ marginBottom: '4rem' }}
@@ -44,7 +44,7 @@ export default function ArmsSection() {
         Ekosistem
       </motion.p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(245,241,234,0.06)' }}>
+      <div className="grid-3">
         {ARMS.map((arm, index) => (
           <motion.div
             key={arm.label}

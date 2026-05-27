@@ -13,12 +13,9 @@ const TOOLS = [
 
 export default function ToolsSection() {
   return (
-    <section style={{
-      padding: '8rem 3rem',
-      borderTop: '1px solid rgba(245,241,234,0.06)',
-    }}>
+    <section className="section-pad" style={{ borderTop: '1px solid rgba(245,241,234,0.06)' }}>
       <motion.div
-        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}
+        className="tools-header"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
@@ -33,7 +30,7 @@ export default function ToolsSection() {
         </Link>
       </motion.div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '1px', background: 'rgba(245,241,234,0.06)' }}>
+      <div className="grid-5">
         {TOOLS.map((tool, index) => (
           <motion.div
             key={tool.name}

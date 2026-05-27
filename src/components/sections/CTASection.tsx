@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function CTASection() {
   return (
-    <section style={{
-      padding: '10rem 3rem',
+    <section className="section-pad-lg" style={{
       borderTop: '1px solid rgba(245,241,234,0.06)',
       textAlign: 'center',
     }}>
@@ -24,7 +23,7 @@ export default function CTASection() {
       <motion.h2
         style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(40px, 6vw, 80px)',
+          fontSize: 'clamp(36px, 6vw, 80px)',
           fontWeight: 300, lineHeight: 1.1,
           marginBottom: '1.5rem',
         }}

@@ -24,7 +24,7 @@ export default function ContactPage() {
             justifyContent: 'center',
             overflow: 'hidden',
             background: 'var(--color-ink)',
-            padding: '12rem 3rem 6rem',
+            padding: 'clamp(7rem, 15vw, 12rem) 1.5rem clamp(4rem, 8vw, 6rem)',
             textAlign: 'center',
           }}
         >
@@ -82,13 +82,8 @@ export default function ContactPage() {
         </section>
 
         {/* Form + Info */}
-        <section style={{ padding: '6rem 3rem 10rem', maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 380px',
-            gap: '4rem',
-            alignItems: 'start',
-          }}>
+        <section style={{ padding: '6rem 1.5rem 8rem', maxWidth: '1100px', margin: '0 auto' }}>
+          <div className="contact-grid">
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}

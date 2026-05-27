@@ -137,14 +137,14 @@ export default function DeliverablePage() {
         </span>
       </header>
 
-      <main style={{ maxWidth: '860px', margin: '0 auto', padding: '3rem 2.5rem' }}>
+      <main style={{ maxWidth: '860px', margin: '0 auto', padding: '2.5rem 1.5rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
         >
           {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem', gap: '1rem', flexWrap: 'wrap' }}>
             <div>
               <p className="label-section" style={{ marginBottom: '0.75rem' }}>Deliverable</p>
               <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300 }}>
@@ -167,6 +167,7 @@ export default function DeliverablePage() {
               background: 'var(--color-ink-2)',
               border: '1px solid rgba(245,241,234,0.06)',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              flexWrap: 'wrap', gap: '1rem',
               marginBottom: '2rem',
             }}>
               <div>
@@ -250,7 +251,7 @@ export default function DeliverablePage() {
 
           {/* Action buttons */}
           {canAct && (
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
               <button
                 onClick={() => setPanel('revision')}
                 className="btn-ghost"

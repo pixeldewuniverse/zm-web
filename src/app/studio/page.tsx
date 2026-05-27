@@ -123,7 +123,7 @@ export default function StudioPage() {
           <div style={{
             position: 'relative', zIndex: 10,
             maxWidth: '760px', margin: '0 auto',
-            padding: '10rem 3rem 8rem',
+            padding: 'clamp(7rem, 15vw, 10rem) 1.5rem clamp(5rem, 10vw, 8rem)',
             textAlign: 'center',
           }}>
             <motion.p
@@ -197,7 +197,7 @@ export default function StudioPage() {
         </section>
 
         {/* ── SERVICES GRID ─────────────────────────────────── */}
-        <section id="layanan" style={{ padding: '8rem 3rem' }}>
+        <section id="layanan" className="section-pad">
           <motion.p
             className="label-section"
             style={{ marginBottom: '4rem' }}
@@ -209,12 +209,7 @@ export default function StudioPage() {
             Layanan
           </motion.p>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px',
-            background: 'rgba(245,241,234,0.06)',
-          }}>
+          <div className="grid-3">
             {SERVICES.map((service, i) => (
               <motion.div
                 key={service.number}
@@ -278,8 +273,7 @@ export default function StudioPage() {
         </section>
 
         {/* ── PROCESS ────────────────────────────────────────── */}
-        <section style={{
-          padding: '8rem 3rem',
+        <section className="section-pad" style={{
           background: 'var(--color-ink-2)',
           borderTop: '1px solid rgba(245,241,234,0.06)',
           borderBottom: '1px solid rgba(245,241,234,0.06)',
@@ -314,16 +308,9 @@ export default function StudioPage() {
           </motion.h2>
 
           {/* Steps row */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '0',
-            position: 'relative',
-            maxWidth: '900px',
-            margin: '0 auto',
-          }}>
+          <div className="grid-4 studio-steps" style={{ position: 'relative', maxWidth: '900px', margin: '0 auto' }}>
             {/* Connector line */}
-            <div style={{
+            <div className="step-connector" style={{
               position: 'absolute',
               top: '28px',
               left: '12.5%',
@@ -393,12 +380,8 @@ export default function StudioPage() {
         {/* ── CTA SECTION ────────────────────────────────────── */}
         <section
           id="konsultasi"
-          style={{
-            padding: '10rem 3rem',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
+          className="section-pad-lg"
+          style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}
         >
           {/* Subtle background glow */}
           <div style={{
