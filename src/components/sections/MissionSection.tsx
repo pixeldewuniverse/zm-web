@@ -31,9 +31,9 @@ export default function MissionSection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        "Bisnis yang paling kuat adalah yang{' '}
-        <span style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>tujuannya tidak bisa dibeli</span>
-        {' '}oleh kompetitor manapun."
+        "Jutaan orang punya ide bagus. Sedikit yang punya{' '}
+        <span style={{ color: 'var(--color-gold)', fontStyle: 'normal' }}>infrastruktur</span>
+        {' '}untuk mengubah ide menjadi income berkelanjutan."
       </motion.blockquote>
 
       <motion.div
@@ -42,9 +42,12 @@ export default function MissionSection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="label-section" style={{ marginBottom: '1.5rem' }}>Filosofi</p>
+        <p className="label-section" style={{ marginBottom: '1.5rem' }}>Keyakinan Inti</p>
         <p style={{ fontSize: '0.875rem', color: 'rgba(245,241,234,0.45)', lineHeight: 1.9, marginBottom: '2rem' }}>
-          Kami percaya memiliki income sendiri, membangun bisnis digital, dan tetap hadir untuk keluarga — bukan pilihan yang saling mengorbankan.
+          Kebanyakan bisnis dibangun di atas asumsi: butuh ide besar, modal besar, atau jaringan besar untuk scale. Kebenarannya lebih sederhana — dan lebih sulit: kamu butuh <em style={{ color: 'rgba(245,241,234,0.7)' }}>sistem</em>.
+        </p>
+        <p style={{ fontSize: '0.875rem', color: 'rgba(245,241,234,0.45)', lineHeight: 1.9, marginBottom: '2rem' }}>
+          ZM ada untuk mendemokratisasi infrastruktur itu. Bukan platform untuk para pahlawan. Tapi sistem operasi bagi orang biasa untuk mencapai hasil luar biasa — bukan melalui keberuntungan, tapi melalui sistem.
         </p>
         <p style={{ fontSize: '0.875rem', color: 'rgba(245,241,234,0.45)', lineHeight: 1.9 }}>
           Ika adalah user pertama semua produk ZM.{' '}

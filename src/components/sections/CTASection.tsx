@@ -8,7 +8,14 @@ export default function CTASection() {
     <section className="section-pad-lg" style={{
       borderTop: '1px solid rgba(245,241,234,0.06)',
       textAlign: 'center',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(184,145,42,0.07) 0%, transparent 70%)',
+      }} />
+
       <motion.p
         className="label-section"
         style={{ justifyContent: 'center', marginBottom: '2rem' }}
@@ -17,7 +24,7 @@ export default function CTASection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        Mulai Sekarang
+        Mulai dari Sini
       </motion.p>
 
       <motion.h2
@@ -32,21 +39,35 @@ export default function CTASection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
-        Siap tumbuh secara{' '}
-        <em style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>terukur?</em>
+        Infrastruktur untuk{' '}
+        <em style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>income mandiri</em>
       </motion.h2>
 
       <motion.p
         style={{
-          fontSize: '0.875rem', color: 'rgba(245,241,234,0.4)',
-          maxWidth: '360px', margin: '0 auto 3rem', lineHeight: 1.8,
+          fontSize: '0.9375rem', color: 'rgba(245,241,234,0.4)',
+          maxWidth: '460px', margin: '0 auto 1rem', lineHeight: 1.8,
         }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
       >
-        Bergabunglah dengan perempuan Indonesia yang membangun bisnis digital bersama Zaresh Meridian.
+        Studio untuk yang butuh tim ahli sekarang. Academy untuk yang ingin belajar dan bangun sendiri. Products untuk yang butuh tools yang bekerja.
+      </motion.p>
+
+      <motion.p
+        style={{
+          fontSize: '0.75rem', color: 'rgba(245,241,234,0.2)',
+          maxWidth: '400px', margin: '0 auto 3rem', lineHeight: 1.7,
+          fontStyle: 'italic',
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+      >
+        Tidak ada secret. Tidak ada urgensi palsu. Hanya sistem yang bekerja, terbukti dari klien dan anggota yang sudah memakainya.
       </motion.p>
 
       <motion.div
@@ -54,7 +75,7 @@ export default function CTASection() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
       >
         <Link href="/contact" className="btn-primary">Mulai Konsultasi Gratis</Link>
         <Link href="/academy" className="btn-ghost">Gabung Academy</Link>

@@ -183,7 +183,7 @@ export default function HeroSection() {
           zIndex: 10,
         }}
       >
-        Bisnis yang tumbuh saat kamu istirahat.
+        Sistem lebih kuat dari heroisme. Komunitas lebih berumur dari personal brand.
       </motion.p>
     </motion.section>
   )

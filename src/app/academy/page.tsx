@@ -498,7 +498,7 @@ export default function AcademyPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}
             >
-              Academy
+              Academy — The Bridge
             </motion.p>
 
             <motion.h1
@@ -515,10 +515,11 @@ export default function AcademyPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
             >
-              Skill yang Mengubah{' '}
+              Dari{' '}
               <em style={{ color: 'var(--color-academy)', fontStyle: 'italic' }}>
-                Followers Jadi Pendapatan
+                "Saya Takut Mulai"
               </em>
+              {' '}ke "Saya Mengerti Jalannya"
             </motion.h1>
 
             <motion.p
@@ -526,15 +527,30 @@ export default function AcademyPage() {
                 fontSize: '0.9375rem',
                 color: 'rgba(245,241,234,0.5)',
                 lineHeight: 1.8,
-                maxWidth: '520px',
-                margin: '0 auto 3rem',
+                maxWidth: '540px',
+                margin: '0 auto 1.25rem',
               }}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
             >
-              Untuk perempuan yang ingin membangun bisnis digital dengan strategi
-              nyata, bukan trik kosong.
+              Academy mengambil pelajaran nyata dari proyek Studio — bukan teori — dan mengubahnya menjadi framework yang bisa dipelajari dan dijalankan oleh siapapun.
+            </motion.p>
+
+            <motion.p
+              style={{
+                fontSize: '0.75rem',
+                color: 'rgba(245,241,234,0.25)',
+                lineHeight: 1.7,
+                maxWidth: '460px',
+                margin: '0 auto 3rem',
+                fontStyle: 'italic',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+            >
+              Mentor, bukan sales. Komunitas agar tidak merasa sendirian. Target: first revenue dalam 6–12 minggu.
             </motion.p>
 
             <motion.div

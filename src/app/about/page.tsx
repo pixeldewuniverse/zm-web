@@ -9,22 +9,75 @@ const EASE = [0.16, 1, 0.3, 1] as const
 const VIEW = { once: true, margin: '-100px' } as const
 const TRANSITION = { duration: 0.9, ease: EASE }
 
-const VALUES = [
+const NAME_COLS = [
   {
-    title: 'Jujur dulu',
-    body: 'Tidak ada janji palsu. Kalau something tidak cocok untuk kamu, kami akan bilang.',
+    label: 'Zaresh',
+    accent: 'var(--color-gold)',
+    body: 'Kekayaan, Kelimpahan, Kemelimpahan — tapi bukan hanya uang. Kaya dalam pilihan. Kaya dalam kebebasan waktu. Kaya dalam kepastian bisa menghidupi keluarga tanpa minta izin siapapun. Zaresh adalah kondisi emosional dari kedaulatan finansial.',
   },
   {
-    title: 'Eat our own cooking',
-    body: 'Ika pakai semua produk ZM untuk bisnisnya sendiri. Bukan showcase, tapi proof.',
+    label: 'Meridian',
+    accent: 'var(--color-studio)',
+    body: 'Sebuah garis referensi; titik navigasi. Kamu tersesat di hutan \'bagaimana cara mulai?\' Meridianmu adalah arah yang masuk akal. Bukan satu-satunya jalur — tapi jalurmu, dikalibrasi untuk posisimu sekarang.',
   },
   {
-    title: 'Tidak ada yang harus sendirian',
-    body: 'Komunitas, mentor, dan sistem support ada untuk memastikan kamu tidak stuck.',
+    label: '& Co.',
+    accent: 'var(--color-academy)',
+    body: '\'Co.\' berarti kolaborasi, kemitraan, kebersamaan. Setiap orang yang membangun income di sini bergabung dengan kolektif yang membangun masa depan yang sama. Kesuksesan kamu membuat jalur orang berikutnya lebih jelas.',
+  },
+]
+
+const ARMS = [
+  {
+    num: '01',
+    accent: 'var(--color-studio)',
+    title: 'Studio',
+    subtitle: 'The Proof',
+    body: 'Bukti bahwa metodologi ZM benar-benar bekerja untuk masalah bisnis nyata. Bukan teori — praktik, diaudit oleh klien yang membayar. Melayani UMKM yang kesulitan eksekusi marketing, agensi yang butuh mitra teknis, brand yang ingin implementasi AI automation.',
+    href: '/studio',
   },
   {
-    title: 'Bisnis ≠ mengorbankan keluarga',
-    body: 'Kami percaya keduanya bisa berjalan beriringan kalau sistemnya benar.',
+    num: '02',
+    accent: 'var(--color-academy)',
+    title: 'Academy',
+    subtitle: 'The Bridge',
+    body: 'Mengambil perempuan (atau siapapun) yang takut untuk mulai dan memindahkan mereka ke \'saya mengerti jalannya.\' Bukan kursus biasa — ini knowledge Studio yang dikodifikasi dan diskala. Komunitas agar pelajar tidak merasa sendirian.',
+    href: '/academy',
+  },
+  {
+    num: '03',
+    accent: 'var(--color-products)',
+    title: 'Products',
+    subtitle: 'The Leverage',
+    body: 'Bukti bahwa sistem scale tanpa tambahan waktu manusia. Memungkinkan builder menciptakan sesuatu yang menghasilkan revenue saat mereka tidur, mentoring, atau liburan. Write, Plan, Lens, Desk, Bloom — setiap tool satu pekerjaan.',
+    href: '/products',
+  },
+]
+
+const VOICE = [
+  {
+    title: 'Jujur',
+    body: 'Tidak ada hype. Tidak ada urgensi palsu. Kalau butuh 6 bulan, kami bilang 6 bulan. Kalau sulit, kami bilang sulit.',
+  },
+  {
+    title: 'Spesifik',
+    body: 'Kami tidak bilang \'kebebasan finansial.\' Kami bilang \'Rp 50 juta per bulan recurring revenue tanpa kerja 80 jam.\' Spesifik membangun kepercayaan.',
+  },
+  {
+    title: 'Instruktif',
+    body: 'Kami tunjukkan, bukan hanya inspirasi. Framework. Cara implementasi. Tiga contoh. Di mana bisa gagal. Mengajar ke skeptis, bukan ke yang sudah percaya.',
+  },
+  {
+    title: 'Hangat, Bukan Lembek',
+    body: 'Kami peduli. Kami tidak memanjakan. Ekspektasi tinggi karena kami tahu kamu bisa memenuhinya. Rayakan usaha, bukan hanya hasil.',
+  },
+  {
+    title: 'Indonesia Autentik',
+    body: 'Ditulis untuk pengusaha Indonesia, menggunakan konteks Indonesia. Bukan menerjemahkan guru-speak bule ke bahasa Indonesia.',
+  },
+  {
+    title: 'Anti-Guru',
+    body: 'Kami tidak memposisikan siapapun sebagai tidak bisa salah. Kami tunjukkan kegagalan, pivot, taruhan yang salah. Otoritas dari sistem, bukan karisma.',
   },
 ]
 
@@ -33,260 +86,93 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main>
-        {/* ── Hero ───────────────────────────────────── */}
+        {/* ── Section 1: Hero / Core Belief ─────────── */}
         <section
+          className="section-pad-lg"
           style={{
-            padding: '8rem 3rem',
-            maxWidth: '1200px',
-            margin: '0 auto',
+            background: 'var(--color-ink)',
+            paddingTop: 'calc(8rem + 80px)',
           }}
         >
-          <motion.p
-            className="label-section"
-            style={{ marginBottom: '4rem' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-          >
-            About
-          </motion.p>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '5rem',
-              alignItems: 'center',
-            }}
-          >
-            {/* Left: placeholder image */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
-            >
-              <div
-                style={{
-                  aspectRatio: '4/5',
-                  background: 'var(--color-ink-2)',
-                  border: '1px solid rgba(184,145,42,0.4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}
-              >
-                {/* Corner accents */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '1rem',
-                    left: '1rem',
-                    width: '24px',
-                    height: '24px',
-                    borderTop: '1px solid rgba(184,145,42,0.6)',
-                    borderLeft: '1px solid rgba(184,145,42,0.6)',
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '1rem',
-                    right: '1rem',
-                    width: '24px',
-                    height: '24px',
-                    borderBottom: '1px solid rgba(184,145,42,0.6)',
-                    borderRight: '1px solid rgba(184,145,42,0.6)',
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '6rem',
-                    fontWeight: 300,
-                    color: 'rgba(184,145,42,0.2)',
-                    letterSpacing: '-0.02em',
-                    userSelect: 'none',
-                  }}
-                >
-                  Ika
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Right: text */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
-            >
-              <h1
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
-                  fontWeight: 300,
-                  lineHeight: 1.15,
-                  color: 'var(--color-paper)',
-                  marginBottom: '1.5rem',
-                  letterSpacing: '-0.01em',
-                }}
-              >
-                Ika —{' '}
-                <span style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>
-                  Founder
-                </span>{' '}
-                Zaresh Meridian &amp; Co.
-              </h1>
-
-              <p
-                style={{
-                  fontSize: '1.0625rem',
-                  lineHeight: 1.8,
-                  color: 'var(--color-paper-muted)',
-                  maxWidth: '480px',
-                }}
-              >
-                Perempuan yang belajar marketing keras-keras supaya tidak ada yang bisa
-                tipu-tipu soal angka.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── Story ──────────────────────────────────── */}
-        <section
-          style={{
-            padding: '8rem 3rem',
-            background: 'var(--color-ink-2)',
-          }}
-        >
-          <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <motion.p
               className="label-section"
-              style={{ marginBottom: '2rem' }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEW}
-              transition={TRANSITION}
+              style={{ marginBottom: '3rem' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             >
-              Cerita
+              Keyakinan Inti
             </motion.p>
 
-            <motion.h2
+            <motion.h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
                 fontWeight: 300,
-                color: 'var(--color-paper)',
-                marginBottom: '3rem',
                 lineHeight: 1.2,
+                color: 'var(--color-paper)',
+                letterSpacing: '-0.015em',
+                marginBottom: '2rem',
               }}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEW}
-              transition={{ ...TRANSITION, delay: 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
             >
-              Kenapa Zaresh Meridian Ada
-            </motion.h2>
+              "Kebanyakan bisnis dibangun di atas kebohongan: bahwa kamu butuh ide besar, modal besar, atau jaringan besar untuk scale."
+            </motion.h1>
 
-            {[
-              `Ika mulai belajar marketing dari nol — tidak ada mentor, tidak ada bekal formal. Yang ada hanya kebutuhan mendesak untuk menghidupkan bisnis sendiri. Di tengah jalan, ia pernah kena tipu agensi yang menjanjikan bintang tapi menghasilkan laporan penuh angka tanpa makna. Dari situ ia memutuskan: satu-satunya cara adalah belajar sendiri sampai benar-benar paham, sampai tidak ada orang yang bisa membodohinya lagi dengan jargon dan grafik cantik tanpa konversi nyata.`,
+            <motion.p
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                fontStyle: 'italic',
+                color: 'var(--color-gold)',
+                lineHeight: 1.5,
+                marginBottom: '2.5rem',
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.35 }}
+            >
+              Kebenarannya lebih sederhana dan lebih sulit: kamu butuh sistem.
+            </motion.p>
 
-              `Makin dalam ia belajar, makin jelas polanya: banyak perempuan lain yang menghadapi persis masalah yang sama. Tidak ada resources marketing yang jujur dan ramah untuk pemula. Semua terasa terlalu teknis atau terlalu mahal. Yang tersedia di internet kebanyakan konten bule yang jauh dari konteks bisnis lokal, atau kursus mahal yang isinya tipis. Ada kekosongan besar — dan kekosongan itu menyakitkan banyak orang.`,
+            <motion.p
+              style={{
+                fontSize: '0.9375rem',
+                lineHeight: 1.85,
+                color: 'rgba(245,241,234,0.5)',
+                maxWidth: '680px',
+                marginBottom: '2.5rem',
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.45 }}
+            >
+              Jutaan orang punya ide bagus. Sedikit yang punya infrastruktur untuk mengubah ide menjadi income berkelanjutan. Zaresh Meridian &amp; Co. ada untuk mendemokratisasi infrastruktur itu.
+            </motion.p>
 
-              `Zaresh Meridian lahir bukan sebagai solusi instan, tapi sebagai jawaban sistemik. Bukan sekadar agensi yang mengerjakan marketing kamu, bukan sekadar academy yang mengajarkan teori, tapi ekosistem lengkap: Studio untuk yang butuh tim profesional, Academy untuk yang ingin belajar dan mandiri, serta Products — tools yang dipakai Ika sendiri setiap hari untuk menjalankan bisnis ini. Satu ekosistem, satu misi.`,
-            ].map((para, i) => (
-              <motion.p
-                key={i}
-                style={{
-                  fontSize: '1rem',
-                  lineHeight: 1.9,
-                  color: 'rgba(245,241,234,0.6)',
-                  marginBottom: i < 2 ? '2rem' : 0,
-                }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VIEW}
-                transition={{ ...TRANSITION, delay: 0.1 * (i + 1) }}
-              >
-                {para}
-              </motion.p>
-            ))}
+            <motion.p
+              style={{
+                fontSize: '0.875rem',
+                lineHeight: 1.8,
+                color: 'var(--color-paper)',
+                maxWidth: '680px',
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
+            >
+              Setiap orang yang membangun income melalui ZM membuktikan bahwa sistem bekerja. Kesuksesan mereka bukan pengecualian — itu bisa direplikasi. Dan itulah seluruh intinya.
+            </motion.p>
           </div>
         </section>
 
-        {/* ── North Star ─────────────────────────────── */}
-        <section style={{ padding: '8rem 3rem' }}>
-          <motion.div
-            style={{
-              maxWidth: '900px',
-              margin: '0 auto',
-              border: '1px solid rgba(184,145,42,0.35)',
-              padding: '4rem 4.5rem',
-              position: 'relative',
-              background:
-                'linear-gradient(135deg, rgba(184,145,42,0.06) 0%, rgba(184,145,42,0.02) 60%, transparent 100%)',
-              overflow: 'hidden',
-            }}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={VIEW}
-            transition={TRANSITION}
-          >
-            {/* Decorative gold glow */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '-60px',
-                right: '-60px',
-                width: '240px',
-                height: '240px',
-                background:
-                  'radial-gradient(ellipse, rgba(184,145,42,0.15) 0%, transparent 70%)',
-                borderRadius: '50%',
-                pointerEvents: 'none',
-              }}
-            />
-
-            <p
-              style={{
-                fontSize: '0.5625rem',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: 'var(--color-gold)',
-                marginBottom: '2rem',
-              }}
-            >
-              North Star
-            </p>
-
-            <p
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
-                fontWeight: 300,
-                color: 'var(--color-paper)',
-                lineHeight: 1.4,
-                letterSpacing: '-0.01em',
-              }}
-            >
-              "Berapa perempuan yang bisa kami bantu punya income sendiri dari bisnis
-              digital —{' '}
-              <span style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>
-                tanpa mengorbankan keluarga?
-              </span>
-              "
-            </p>
-          </motion.div>
-        </section>
-
-        {/* ── Values ─────────────────────────────────── */}
+        {/* ── Section 2: Name Meaning ────────────────── */}
         <section
-          style={{
-            padding: '8rem 3rem',
-            background: 'var(--color-ink-2)',
-          }}
+          className="section-pad"
+          style={{ background: 'var(--color-ink-2)' }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <motion.p
@@ -297,79 +183,42 @@ export default function AboutPage() {
               viewport={VIEW}
               transition={TRANSITION}
             >
-              Nilai
+              Kenapa Nama Ini Penting
             </motion.p>
 
-            <motion.h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-                fontWeight: 300,
-                color: 'var(--color-paper)',
-                marginBottom: '4rem',
-                lineHeight: 1.2,
-              }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEW}
-              transition={{ ...TRANSITION, delay: 0.1 }}
-            >
-              Apa yang Kami Percaya
-            </motion.h2>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '1px',
-                background: 'rgba(245,241,234,0.06)',
-              }}
-            >
-              {VALUES.map((value, index) => (
+            <div className="grid-3">
+              {NAME_COLS.map((col, i) => (
                 <motion.div
-                  key={value.title}
+                  key={col.label}
                   style={{
-                    background: 'var(--color-ink-2)',
-                    padding: '2.5rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1rem',
+                    borderTop: `2px solid ${col.accent}`,
+                    paddingTop: '1.5rem',
                   }}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={VIEW}
-                  transition={{ ...TRANSITION, delay: index * 0.08 }}
+                  transition={{ ...TRANSITION, delay: i * 0.1 }}
                 >
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '0.75rem',
-                      letterSpacing: '0.15em',
-                      color: 'var(--color-gold)',
-                      opacity: 0.4,
-                    }}
-                  >
-                    0{index + 1}
-                  </div>
-                  <h3
+                  <p
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.375rem',
                       fontWeight: 500,
-                      color: 'var(--color-paper)',
-                      lineHeight: 1.3,
+                      color: col.accent,
+                      marginBottom: '1rem',
+                      letterSpacing: '-0.01em',
                     }}
                   >
-                    {value.title}
-                  </h3>
+                    {col.label}
+                  </p>
                   <p
                     style={{
-                      fontSize: '0.875rem',
-                      lineHeight: 1.75,
-                      color: 'rgba(245,241,234,0.5)',
+                      fontSize: '0.9375rem',
+                      lineHeight: 1.8,
+                      color: 'rgba(245,241,234,0.6)',
                     }}
                   >
-                    {value.body}
+                    {col.body}
                   </p>
                 </motion.div>
               ))}
@@ -377,30 +226,325 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── CTA ────────────────────────────────────── */}
+        {/* ── Section 3: Three Arms ──────────────────── */}
         <section
+          className="section-pad"
+          style={{ background: 'var(--color-ink)' }}
+        >
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <motion.p
+              className="label-section"
+              style={{ marginBottom: '1.5rem' }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={TRANSITION}
+            >
+              Satu Ekosistem, Tiga Titik Masuk
+            </motion.p>
+
+            <div className="grid-3">
+              {ARMS.map((arm, i) => (
+                <motion.div
+                  key={arm.num}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.25rem',
+                  }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VIEW}
+                  transition={{ ...TRANSITION, delay: i * 0.1 }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.75rem',
+                        letterSpacing: '0.15em',
+                        color: 'rgba(245,241,234,0.25)',
+                      }}
+                    >
+                      {arm.num}
+                    </span>
+                    <span
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        background: arm.accent,
+                        flexShrink: 0,
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 400,
+                        color: 'var(--color-paper)',
+                        lineHeight: 1.2,
+                        marginBottom: '0.25rem',
+                      }}
+                    >
+                      {arm.title}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '0.8125rem',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        color: arm.accent,
+                        opacity: 0.8,
+                      }}
+                    >
+                      {arm.subtitle}
+                    </p>
+                  </div>
+
+                  <p
+                    style={{
+                      fontSize: '0.9375rem',
+                      lineHeight: 1.8,
+                      color: 'rgba(245,241,234,0.55)',
+                      flexGrow: 1,
+                    }}
+                  >
+                    {arm.body}
+                  </p>
+
+                  <Link
+                    href={arm.href}
+                    style={{
+                      fontSize: '0.8125rem',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: arm.accent,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                    }}
+                  >
+                    Selengkapnya →
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 4: Brand Voice ─────────────────── */}
+        <section
+          className="section-pad"
+          style={{ background: 'var(--color-ink-2)' }}
+        >
+          <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+            <motion.p
+              className="label-section"
+              style={{ marginBottom: '1.5rem' }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={TRANSITION}
+            >
+              Bagaimana Kami Berbicara
+            </motion.p>
+
+            <motion.h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 300,
+                color: 'var(--color-paper)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.015em',
+                marginBottom: '4rem',
+              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={{ ...TRANSITION, delay: 0.1 }}
+            >
+              Suara Brand
+            </motion.h2>
+
+            <div className="grid-2">
+              {VOICE.map((trait, i) => (
+                <motion.div
+                  key={trait.title}
+                  style={{
+                    borderTop: '1px solid rgba(245,241,234,0.1)',
+                    paddingTop: '1.5rem',
+                    paddingBottom: '1.5rem',
+                  }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={VIEW}
+                  transition={{ ...TRANSITION, delay: i * 0.07 }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.125rem',
+                      fontWeight: 500,
+                      color: 'var(--color-paper)',
+                      marginBottom: '0.625rem',
+                    }}
+                  >
+                    {trait.title}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: '0.9375rem',
+                      lineHeight: 1.75,
+                      color: 'rgba(245,241,234,0.55)',
+                    }}
+                  >
+                    {trait.body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 5: Positioning ─────────────────── */}
+        <section
+          className="section-pad"
           style={{
-            padding: '8rem 3rem',
-            textAlign: 'center',
             background: 'var(--color-ink)',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <motion.p
+              className="label-section"
+              style={{ marginBottom: '1.5rem', display: 'inline-block' }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={TRANSITION}
+            >
+              Positioning
+            </motion.p>
+
+            <motion.h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+                fontWeight: 300,
+                color: 'var(--color-paper)',
+                lineHeight: 1.2,
+                letterSpacing: '-0.015em',
+                marginBottom: '3rem',
+              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={{ ...TRANSITION, delay: 0.1 }}
+            >
+              Infrastruktur untuk income mandiri
+            </motion.h2>
+
+            <motion.blockquote
+              style={{
+                border: '1px solid rgba(184,145,42,0.3)',
+                background: 'rgba(184,145,42,0.04)',
+                padding: '3rem',
+                marginBottom: '3rem',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1rem, 1.75vw, 1.25rem)',
+                fontStyle: 'italic',
+                fontWeight: 300,
+                color: 'var(--color-paper)',
+                lineHeight: 1.7,
+                letterSpacing: '-0.005em',
+                textAlign: 'left',
+              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={{ ...TRANSITION, delay: 0.15 }}
+            >
+              "Untuk builder di seluruh Indonesia yang ingin membangun income mandiri — terhalang oleh gatekeeping, fragmentasi tool, atau isolasi — Zaresh Meridian &amp; Co. adalah ekosistem terpadu dari layanan terverifikasi, edukasi scalable, tools otomasi, dan komunitas autentik, yang menghilangkan hambatan antara ide dan eksekusi melalui sistem, bukan heroisme."
+            </motion.blockquote>
+
+            <motion.div
+              style={{ textAlign: 'left' }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEW}
+              transition={{ ...TRANSITION, delay: 0.2 }}
+            >
+              <p
+                style={{
+                  fontSize: '0.5625rem',
+                  letterSpacing: '0.3em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-gold)',
+                  marginBottom: '1rem',
+                }}
+              >
+                Bukan
+              </p>
+              <p
+                style={{
+                  fontSize: '0.9375rem',
+                  lineHeight: 1.85,
+                  color: 'rgba(245,241,234,0.5)',
+                }}
+              >
+                Bukan platform guru lain yang menjual rahasia atau jalan pintas. Bukan pabrik kursus yang memaksimalkan enrollment. Bukan vendor SaaS terputus tanpa konteks masalah bisnis nyata. Kami perusahaan infrastruktur yang percaya sistem bekerja lebih baik dari heroisme. Dan kami membuktikannya melalui operasi kami sendiri.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── Section 6: CTA ────────────────────────── */}
+        <section
+          className="section-pad"
+          style={{
+            background: 'var(--color-ink-2)',
+            textAlign: 'center',
           }}
         >
           <motion.h2
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
               fontWeight: 300,
               color: 'var(--color-paper)',
-              marginBottom: '2.5rem',
               lineHeight: 1.2,
+              letterSpacing: '-0.015em',
+              marginBottom: '1.5rem',
             }}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEW}
             transition={TRANSITION}
           >
-            Kerja Sama atau Ada Pertanyaan?
+            Mulai dari Mana yang Masuk Akal Untukmu
           </motion.h2>
+
+          <motion.p
+            style={{
+              fontSize: '0.9375rem',
+              lineHeight: 1.8,
+              color: 'rgba(245,241,234,0.55)',
+              maxWidth: '560px',
+              margin: '0 auto 3rem',
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ ...TRANSITION, delay: 0.1 }}
+          >
+            Studio kalau kamu butuh tim ahli sekarang. Academy kalau kamu ingin belajar dan bangun sendiri. Products kalau kamu butuh tools yang bekerja.
+          </motion.p>
 
           <motion.div
             style={{
@@ -412,13 +556,13 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEW}
-            transition={{ ...TRANSITION, delay: 0.15 }}
+            transition={{ ...TRANSITION, delay: 0.2 }}
           >
-            <Link href="mailto:halo@zareshmeridian.com" className="btn-primary">
-              Hubungi Kami
+            <Link href="/contact" className="btn-primary">
+              Konsultasi dengan Studio
             </Link>
-            <Link href="/studio" className="btn-ghost">
-              Lihat Layanan Studio
+            <Link href="/academy" className="btn-ghost">
+              Gabung Academy
             </Link>
           </motion.div>
         </section>

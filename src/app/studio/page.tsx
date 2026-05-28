@@ -133,7 +133,7 @@ export default function StudioPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}
             >
-              Studio
+              Studio — The Proof
             </motion.p>
 
             <motion.h1
@@ -150,9 +150,9 @@ export default function StudioPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
             >
-              Sistem Digital Marketing yang Benar —{' '}
+              Bukan Teori —{' '}
               <em style={{ color: 'var(--color-gold)', fontStyle: 'italic' }}>
-                Bukan Sekadar Konten
+                Praktik yang Diaudit Klien
               </em>
             </motion.h1>
 
@@ -161,14 +161,30 @@ export default function StudioPage() {
                 fontSize: '0.9375rem',
                 color: 'rgba(245,241,234,0.5)',
                 lineHeight: 1.8,
-                maxWidth: '520px',
-                margin: '0 auto 3rem',
+                maxWidth: '540px',
+                margin: '0 auto 1.5rem',
               }}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
             >
-              Kami bangun mesin pertumbuhan untuk bisnis perempuan Indonesia, bukan sekadar konten yang habis.
+              Studio membuktikan metodologi ZM bekerja untuk masalah bisnis nyata dengan revenue nyata yang dipertaruhkan. Setiap proyek klien menjadi bahan ajar — dan memberi makan Academy.
+            </motion.p>
+
+            <motion.p
+              style={{
+                fontSize: '0.75rem',
+                color: 'rgba(245,241,234,0.25)',
+                lineHeight: 1.7,
+                maxWidth: '460px',
+                margin: '0 auto 3rem',
+                fontStyle: 'italic',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+            >
+              Melayani UMKM, agensi yang butuh mitra teknis, dan brand yang ingin implementasi AI automation — bukan klien korporat besar saja.
             </motion.p>
 
             <motion.div

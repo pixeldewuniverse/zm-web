@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Academy', href: '/academy' },
   { label: 'Products', href: '/products' },
   { label: 'About', href: '/about' },
+  { label: 'Vision', href: '/vision' },
   { label: 'Kontak', href: '/contact' },
 ] as const
 
